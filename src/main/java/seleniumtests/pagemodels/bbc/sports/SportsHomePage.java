@@ -1,11 +1,11 @@
-package seleniumtests.pagemodels.bbc.weather;
+package seleniumtests.pagemodels.bbc.sports;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class weatherHomePage {
+public class SportsHomePage {
 
   WebDriver driver;
   String page = "https://www.google.co.uk/";
@@ -17,7 +17,7 @@ public class weatherHomePage {
   WebElement submitSearch;
 
 
-  public weatherHomePage(WebDriver driver) {
+  public SportsHomePage(WebDriver driver) {
     this.driver = driver;
     PageFactory.initElements(driver, this);
   }

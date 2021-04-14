@@ -1,9 +1,11 @@
 Feature: BBC Example Web Tests:
 
-  Scenario: Check my local news
-    Given i navigate to "https://www.bbc.co.uk/"
-    When i check news for "Scotland" "Edinburgh, Fife & East"
-    Then i see stories for "Edinburgh, Fife & East"
+  @test
+  Scenario: Check i can access my local News
+    Given i navigate to "https://www.bbc.co.uk/news"
+    When i click news menu "Scotland"
+    And i click news menu "Edinburgh, Fife & East"
+    Then i see stories for "Edinburgh, Fife & East Scotland"
 
   Scenario: Check Sports F1
     Given i navigate to "https://www.bbc.co.uk/sport"
