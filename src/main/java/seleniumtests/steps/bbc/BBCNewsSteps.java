@@ -28,8 +28,8 @@ public class BBCNewsSteps {
 
     assertThat(pageManager.getNewsHomePage().getCSectionLinkText(input)).contains(input);
 
-    //Cant assert on all items in the list
-    //pageManager.getNewsHomePage().getCSectionLinkText(input)
-      //  .forEach(c -> assertThat(c).contains(input));
+    // Cant assert on all items in the list
+    // pageManager.getNewsHomePage().getCSectionLinkText(input)
+    //  .forEach(c -> assertThat(c).contains(input));
   }
 }

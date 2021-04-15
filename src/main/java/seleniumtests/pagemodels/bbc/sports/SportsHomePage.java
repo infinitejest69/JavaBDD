@@ -1,5 +1,6 @@
 package seleniumtests.pagemodels.bbc.sports;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,29 +9,28 @@ import org.openqa.selenium.support.PageFactory;
 public class SportsHomePage {
 
   WebDriver driver;
-  String page = "https://www.google.co.uk/";
+  String page = "https://www.bbc.co.uk/sport";
 
-  @FindBy(xpath = ".//input[@aria-label='Search']")
-  WebElement search;
+  String menuString = ".//*[@data-stat-name='primary-nav-v2'][contains(text(),'replace')]";
+  String submenuString = ".//*[@data-stat-name='secondary-nav-v2'][contains(text(),'replace')]";
 
-  @FindBy(xpath = ".//input[@aria-label='Google Search']")
-  WebElement submitSearch;
-
+  @FindBy(id = "page")
+  WebElement pageTitle;
 
   public SportsHomePage(WebDriver driver) {
     this.driver = driver;
     PageFactory.initElements(driver, this);
   }
 
-  public void navigateToPage() {
-    driver.get(page);
+  public void clickMenuItem(String menuItem) {
+    driver.findElement(By.xpath(menuString.replace("replace", menuItem))).click();
   }
 
-  public void enterStringToSearch(String input){
-    search.sendKeys(input);
+  public void clickSubMenuItem(String subMenuItem) {
+    driver.findElement(By.xpath(submenuString.replace("replace", subMenuItem))).click();
   }
 
   public String getPageTitle() {
-    return driver.getTitle();
+    return pageTitle.getText();
   }
 }
