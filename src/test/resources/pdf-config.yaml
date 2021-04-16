@@ -6,40 +6,40 @@ displayScenario: true
 displayDetailed: true
 
 summaryConfig:
-  title: Test PDF Report
-  dataBackgroundColor: 4F0CC8
-  titleColor: FF0000
+  title: BBC Web Test PDF Report
+  dataBackgroundColor: 969696
+  titleColor: 969696
   dateColor: 969696
-  startTimeColor: 000000
-  endTimeColor: 000000
-  durationColor: 000000
+  #startTimeColor: 000000
+  #endTimeColor: 000000
+  #durationColor: 000000
   dial:
-    featureRanges: 60 95
-    scenarioRanges: 70 90
-    stepRanges: 75 85
-    badColor: f768a1
-    averageColor: 93ffff
-    goodColor: 32ecab
+    featureRanges: 90 95
+    scenarioRanges: 90 95
+    stepRanges: 90 95
+    badColor: cd0000
+    averageColor: c7cd00
+    goodColor: 3ead20
 
 featureConfig:
-  itemcount: 10
-  totalColor: FF0000
-  durationColor: FF0000
+  featureCount: 10
+  totalColor: 0000cd
+  durationColor: 0000cd
 
 scenarioConfig:
-  itemcount: 12
-  totalColor: FF0000
-  durationColor: FF0000
+  scenarioCount: 12
+  totalColor: 0000cd
+  durationColor: 0000cd
 
 detailedFeatureConfig:
-  featureNameColor: FF0000
+  featureNameColor: 0000cd
   startEndTimeColor: 000000
   tagColor: 404040
   dataHeaderColor: FFFFFF
-  dataBackgroundColor: 404040
+  dataBackgroundColor: 969696
   totalColor: 0000FF
   durationColor: FFFFFF
-  durationBackgroundColor: 404040
+  durationBackgroundColor: 969696
 
 detailedScenarioConfig:
   featureNameColor: C0C0C0
@@ -47,10 +47,10 @@ detailedScenarioConfig:
   startEndTimeColor: 000000
   tagColor: 404040
   dataHeaderColor: FFFFFF
-  dataBackgroundColor: 404040
+  dataBackgroundColor: 969696
   totalColor: 0000FF
   durationColor: FFFFFF
-  durationBackgroundColor: 404040
+  durationBackgroundColor: 969696
   stepChartBarColor: 7f32a8
 
 detailedStepHookConfig:
@@ -59,4 +59,4 @@ detailedStepHookConfig:
   durationColor: FF0000
   errorMsgColor: 000000
   logMsgColor: 000000
-  mediaMsgColor: FF0000
+  #mediaMsgColor: FF0000
