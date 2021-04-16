@@ -26,6 +26,9 @@ public class WeatherHomePage {
 
   public void inputLocation(String location) {
     locationSearchBar.sendKeys(location);
+  }
+
+  public void clickSubmit(){
     submitLocationButton.click();
   }
 
