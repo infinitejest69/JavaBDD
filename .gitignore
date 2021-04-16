@@ -24,3 +24,4 @@ hs_err_pid*
 /.idea/
 /target/
 /JavaBDD.iml
+/test output/
