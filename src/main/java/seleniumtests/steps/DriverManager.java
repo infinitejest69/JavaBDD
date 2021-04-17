@@ -7,6 +7,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import seleniumtests.config.Configuration;
@@ -23,15 +24,6 @@ public class DriverManager {
     this.configuration = new Configuration();
     this.driver = getDriver();
   }
-  //
-  //  public WebDriver startChrome() {
-  //    System.setProperty("webdriver.chrome.driver", configuration.getDriverPath());
-  //    driver = new ChromeDriver();
-  //    driver.manage().window().maximize();
-  //    driver.manage().timeouts().implicitlyWait(configuration.getImplicitlyWait(),
-  // TimeUnit.SECONDS);
-  //    return driver;
-  //  }
 
   public WebDriver getDriver() {
     if (driver == null) driver = createDriver();
@@ -55,11 +47,16 @@ public class DriverManager {
       case FIREFOX:
         driver = new FirefoxDriver();
         break;
+      case EDGE:
+        System.setProperty("webdriver.edge.driver", configuration.getDriverPath());
+        driver = new EdgeDriver();
+        break;
       case CHROME:
         System.setProperty("webdriver.chrome.driver", configuration.getDriverPath());
         driver = new ChromeDriver();
         break;
       case INTERNETEXPLORER:
+        System.setProperty("webdriver.ie.driver", configuration.getDriverPath());
         driver = new InternetExplorerDriver();
         break;
     }
