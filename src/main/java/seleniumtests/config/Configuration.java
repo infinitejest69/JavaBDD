@@ -35,11 +35,26 @@ public class Configuration {
       throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
   }
 
+  public screenShotLevel getScreenShotPolicy() {
+    screenShotLevel screenshotPolicy =
+        screenShotLevel.valueOf(properties.getProperty("screenshotPolicy"));
+    if (screenshotPolicy != null) return screenshotPolicy;
+    else
+      throw new RuntimeException(
+          "screenshotPolicy not specified in the Configuration.properties file.");
+  }
+
   public long getImplicitlyWait() {
     String implicitlyWait = properties.getProperty("implicitlyWait");
     if (implicitlyWait != null) return Long.parseLong(implicitlyWait);
     else
       throw new RuntimeException(
           "implicitlyWait not specified in the Configuration.properties file.");
+  }
+
+  public enum screenShotLevel {
+    NONE,
+    FAIL,
+    ALL
   }
 }

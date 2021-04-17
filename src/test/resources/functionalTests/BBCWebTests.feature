@@ -21,6 +21,13 @@ Feature: BBC Example Web Tests:
     And click search
     Then i see current weather for "Dunfermline"
 
+  @Fail
+  Scenario: Check My Local Weather
+    Given i navigate to "https://www.bbc.co.uk/weather"
+    When i input the location "Dunfermline"
+    And click search
+    Then i see current weather for "Edinburgh"
+
   @test
   Scenario: Check The Tv Guide
     Given i navigate to "https://www.bbc.co.uk/iplayer"

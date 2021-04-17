@@ -6,7 +6,10 @@
 
 #### configuration.properties
 
-Path To WebDrivers and wait time for elements. Any and all other config
+driverPath: Path to Chrome Driver</br>
+implicitlyWait: Wait Time</br>
+screenshotPolicy=Enum for what screenshots are embedded in reports</br>
+NONE, ALL, FAIL
 
 ---
 

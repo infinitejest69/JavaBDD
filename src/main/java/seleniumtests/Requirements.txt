@@ -4,6 +4,6 @@ Functional Requirements:
 [X] Add the 4 basic BBC tests
 [X] Add Reporting
 [] Add Multi-browser support
-[] Add embedded screenshots in reporting
+[X] Add embedded screenshots in reporting
 
 add others Here
