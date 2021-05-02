@@ -14,10 +14,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import seleniumtests.config.Configuration;
 import seleniumtests.enums.ScreenShotLevel;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -72,33 +72,39 @@ public class DriverManager {
   }
 
   private WebDriver createRemoteDriver() {
+    URL grid = null;
     try {
-      switch (configuration.getBrowser()) {
-        case FIREFOX:
-          FirefoxOptions firefoxOptions = new FirefoxOptions();
-          driver = new RemoteWebDriver(new URL(configuration.getGridURL()), firefoxOptions);
-          break;
-        case CHROME:
-          ChromeOptions chromeOptions = new ChromeOptions();
-          chromeOptions.addArguments("start-maximized");
-          driver = new RemoteWebDriver(new URL(configuration.getGridURL()), chromeOptions);
-          break;
-        case INTERNETEXPLORER:
-          InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions();
-          driver =
-              new RemoteWebDriver(new URL(configuration.getGridURL()), internetExplorerOptions);
-          break;
-        case EDGE:
-          EdgeOptions edgeOptions = new EdgeOptions();
-          driver = new RemoteWebDriver(new URL(configuration.getGridURL()), edgeOptions);
-          break;
-      }
-      //      if (configuration.getBrowserWindowSize()) driver.manage().window().maximize();
-      //      driver.manage().timeouts().implicitlyWait(configuration.getImplicitlyWait(),
-      // TimeUnit.SECONDS);
-
-    } catch (Exception e) {
+      grid = new URL(configuration.getGridURL());
+    } catch (MalformedURLException malformedURLException) {
+      malformedURLException.printStackTrace();
     }
+    switch (configuration.getBrowser()) {
+      case FIREFOX:
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setHeadless(true);
+        firefoxOptions.setAcceptInsecureCerts(true);
+        driver = new FirefoxDriver(firefoxOptions);
+        break;
+      case CHROME:
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setHeadless(true);
+        chromeOptions.addArguments("start-maximized");
+        chromeOptions.setAcceptInsecureCerts(true);
+        driver = new ChromeDriver(chromeOptions);
+        // driver = new RemoteWebDriver(grid, chromeOptions);
+        break;
+      case INTERNETEXPLORER:
+        InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions();
+        driver = new InternetExplorerDriver(internetExplorerOptions);
+        break;
+      case EDGE:
+        EdgeOptions edgeOptions = new EdgeOptions();
+        driver = new EdgeDriver(edgeOptions);
+        break;
+    }
+    if (configuration.getBrowserWindowSize()) driver.manage().window().maximize();
+    driver.manage().timeouts().implicitlyWait(configuration.getImplicitlyWait(), TimeUnit.SECONDS);
+
     return driver;
   }
 

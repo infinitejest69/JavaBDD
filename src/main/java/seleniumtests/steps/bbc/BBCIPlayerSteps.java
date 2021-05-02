@@ -9,6 +9,7 @@ import seleniumtests.pagemodels.bbc.iplayer.IPlayerHomePage;
 import seleniumtests.steps.DriverManager;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +32,9 @@ public class BBCIPlayerSteps {
 
   @Then("i see todays Tv Guide")
   public void iSeeTodaysTvGuide() {
-    String day = String.valueOf(LocalDate.now().getDayOfMonth());
+    DateTimeFormatter monthFormatter = DateTimeFormatter.ofPattern("dd");
+
+    String day = LocalDate.now().format(monthFormatter);
     assertThat(iPlayerHomePage.getIPLayerTodaysDate()).isEqualToIgnoringCase(day);
   }
 

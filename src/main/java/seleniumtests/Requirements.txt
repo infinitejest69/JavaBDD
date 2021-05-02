@@ -3,7 +3,8 @@ Basic Requirements for learning project
 Functional Requirements:
 [X] Add the 4 basic BBC tests
 [X] Add Reporting
-[] Add Multi-browser support
+[X] Add Multi-browser support
+[X] Add Docker Grid
 [X] Add embedded screenshots in reporting
 
 add others Here
