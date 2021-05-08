@@ -3,11 +3,13 @@ package seleniumtests.steps;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 
+import java.net.MalformedURLException;
+
 public class CommonSteps {
 
     WebDriver driver;
 
-    public CommonSteps(DriverManager driverManager) {
+    public CommonSteps(DriverManager driverManager) throws MalformedURLException {
         this.driver = driverManager.getDriver();
     }
 

@@ -7,6 +7,8 @@ import seleniumtests.pagemodels.PageManager;
 import seleniumtests.pagemodels.bbc.sports.SportsHomePage;
 import seleniumtests.steps.DriverManager;
 
+import java.net.MalformedURLException;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class BBCSportsSteps {
@@ -15,7 +17,7 @@ public class BBCSportsSteps {
   PageManager pageManager;
   SportsHomePage sportsHomePage;
 
-  public BBCSportsSteps(DriverManager driverManager) {
+  public BBCSportsSteps(DriverManager driverManager) throws MalformedURLException {
     this.driver = driverManager.getDriver();
     this.pageManager = new PageManager(driverManager);
     sportsHomePage = pageManager.getSportsHomePage();

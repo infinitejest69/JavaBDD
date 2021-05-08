@@ -1,6 +1,6 @@
 Feature: BBC Example Web Tests:
 
-  @test
+  @test @1
   Scenario: Check i can access my local News
     Given i navigate to "https://www.bbc.co.uk/news"
     When i click news menu "Scotland"

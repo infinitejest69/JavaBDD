@@ -14,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import seleniumtests.config.Configuration;
 import seleniumtests.enums.ScreenShotLevel;
 
@@ -26,17 +27,17 @@ public class DriverManager {
   Configuration configuration;
   private WebDriver driver;
 
-  public DriverManager() {
+  public DriverManager() throws MalformedURLException {
     this.configuration = new Configuration();
     this.driver = getDriver();
   }
 
-  public WebDriver getDriver() {
+  public WebDriver getDriver() throws MalformedURLException {
     if (driver == null) driver = createDriver();
     return driver;
   }
 
-  private WebDriver createDriver() {
+  private WebDriver createDriver() throws MalformedURLException {
     switch (configuration.getEnvironment()) {
       case LOCAL:
         driver = createLocalDriver();
@@ -71,7 +72,7 @@ public class DriverManager {
     return driver;
   }
 
-  private WebDriver createRemoteDriver() {
+  private WebDriver createRemoteDriver() throws MalformedURLException {
     URL grid = null;
     try {
       grid = new URL(configuration.getGridURL());
@@ -83,23 +84,23 @@ public class DriverManager {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.setHeadless(true);
         firefoxOptions.setAcceptInsecureCerts(true);
-        driver = new FirefoxDriver(firefoxOptions);
+        driver = new RemoteWebDriver(new URL(configuration.getGridURL()), firefoxOptions);
         break;
       case CHROME:
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setHeadless(true);
         chromeOptions.addArguments("start-maximized");
         chromeOptions.setAcceptInsecureCerts(true);
-        driver = new ChromeDriver(chromeOptions);
+        driver = new RemoteWebDriver(new URL(configuration.getGridURL()), chromeOptions);
         // driver = new RemoteWebDriver(grid, chromeOptions);
         break;
       case INTERNETEXPLORER:
         InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions();
-        driver = new InternetExplorerDriver(internetExplorerOptions);
+        driver = new RemoteWebDriver(new URL(configuration.getGridURL()), internetExplorerOptions);
         break;
       case EDGE:
         EdgeOptions edgeOptions = new EdgeOptions();
-        driver = new EdgeDriver(edgeOptions);
+        driver = new RemoteWebDriver(new URL(configuration.getGridURL()), edgeOptions);
         break;
     }
     if (configuration.getBrowserWindowSize()) driver.manage().window().maximize();

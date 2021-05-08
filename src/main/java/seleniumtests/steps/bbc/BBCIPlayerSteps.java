@@ -8,6 +8,7 @@ import seleniumtests.pagemodels.PageManager;
 import seleniumtests.pagemodels.bbc.iplayer.IPlayerHomePage;
 import seleniumtests.steps.DriverManager;
 
+import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -19,7 +20,7 @@ public class BBCIPlayerSteps {
   PageManager pageManager;
   IPlayerHomePage iPlayerHomePage;
 
-  public BBCIPlayerSteps(DriverManager driverManager) {
+  public BBCIPlayerSteps(DriverManager driverManager) throws MalformedURLException {
     this.driver = driverManager.getDriver();
     this.pageManager = new PageManager(driverManager);
     iPlayerHomePage = pageManager.getIPlayerHomePage();

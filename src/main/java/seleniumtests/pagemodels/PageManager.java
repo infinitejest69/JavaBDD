@@ -8,6 +8,8 @@ import seleniumtests.pagemodels.bbc.weather.WeatherHomePage;
 import seleniumtests.pagemodels.google.GoogleHomePage;
 import seleniumtests.steps.DriverManager;
 
+import java.net.MalformedURLException;
+
 public class PageManager {
 
     private final WebDriver driver;
@@ -17,7 +19,7 @@ public class PageManager {
     private IPlayerHomePage iPlayerHomePage;
     private WeatherHomePage weatherHomePage;
 
-    public PageManager(DriverManager driverManager) {
+    public PageManager(DriverManager driverManager) throws MalformedURLException {
         this.driver = driverManager.getDriver();
     }
 

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import seleniumtests.pagemodels.PageManager;
 import seleniumtests.steps.DriverManager;
 
+import java.net.MalformedURLException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BBCNewsSteps {
@@ -13,7 +15,7 @@ public class BBCNewsSteps {
   WebDriver driver;
   PageManager pageManager;
 
-  public BBCNewsSteps(DriverManager driverManager) {
+  public BBCNewsSteps(DriverManager driverManager) throws MalformedURLException {
     this.driver = driverManager.getDriver();
     this.pageManager = new PageManager(driverManager);
   }

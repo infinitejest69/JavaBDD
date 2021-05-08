@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/functionalTests",
         glue = "seleniumtests.steps",
-        tags = "@test",
+        tags = "@1",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 public class TestRunner {
 }

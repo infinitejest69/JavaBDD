@@ -8,6 +8,8 @@ import seleniumtests.pagemodels.PageManager;
 import seleniumtests.pagemodels.bbc.weather.WeatherHomePage;
 import seleniumtests.steps.DriverManager;
 
+import java.net.MalformedURLException;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class BBCWeatherSteps {
@@ -16,7 +18,7 @@ public class BBCWeatherSteps {
     PageManager pageManager;
     WeatherHomePage weatherHomePage;
 
-    public BBCWeatherSteps(DriverManager driverManager) {
+    public BBCWeatherSteps(DriverManager driverManager) throws MalformedURLException {
         this.driver = driverManager.getDriver();
         this.pageManager = new PageManager(driverManager);
         weatherHomePage = pageManager.getWeatherHomePage();
